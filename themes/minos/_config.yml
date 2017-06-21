@@ -1,0 +1,22 @@
+# Header
+logo_text: liuyeliufeng
+menu:
+  Home: /
+  Archives: archives
+  Categories: categories
+  Tags: tags
+  About: about
+
+# Content
+excerpt_link: Read More
+toc: false #  Whether to show the table of contents in articles
+fancybox: true
+
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+
+# Share
+share_jia: false
+share_addthis: true
