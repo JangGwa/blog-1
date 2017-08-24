@@ -1,50 +1,40 @@
 ---
-title: XMLHttpRequest接口FormData异步上传文件
+title: XMLHttpRequest FormData入门
 date: 2016-11-06 19:08:05
 tags: [HTTP, XMLHttpRequest]
 category: HTTP协议
 ---
 
-XMLHttpRequest Level 2添加了一个新的接口FormData.利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个"表单".比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件.
-
-# 构造函数
-
-## new FormData (form? : HTMLFormElement)
-
-参数
-
-**form (可选)**
-
-一个HTML表单元素,可以包含任何形式的表单控件,包括文件输入框.
+> `XMLHttpRequest Level 2`添加了一个新的接口`FormData`。利用`FormData`对象，我们可以通过JavaScript用一些键值对来模拟一系列表单控件，我们还可以使用`XMLHttpRequest`的`send()`方法来异步的提交这个表单。比起普通的ajax，使用`FormData`的最大优点就是我们可以异步上传一个二进制文件。
 
 
-# 方法
+## 创建FormData对象
 
-## append()
+利用FormData对象，你可以使用一系列的键值对来模拟一个完整的表单，然后使用XMLHttpRequest发送表单.
 
-给当前FormData对象添加一个键/值对.
+- 构造函数
+`new FormData (form? : HTMLFormElement)`
+- 参数
+ - `form (可选)`:一个HTML表单元素,可以包含任何形式的表单控件,包括文件输入框.
 
-```
-void append(DOMString name, Blob value, optional DOMString filename);
-void append(DOMString name, DOMString value);
+- 成员方法
+ - append()
 
-```
-## 参数值
+    给当前FormData对象添加一个键/值对.
 
-**name**
-	字段名称.
-**value**
-	字段值.可以是,或者一个字符串,如果全都不是,则该值会被自动转换成字符串.
-**filename**
-	(可选) 指定文件的文件名,当value参数被指定为一个Blob对象或者一个File对象时,该文件名会被发送到服务器上,对于Blob对象来说,这个值默认为"blob".
+    ```
+    void append(DOMString name, Blob value, optional DOMString filename);
+    void append(DOMString name, DOMString value);
+
+    ```
+ - 参数值
+    `name`: 字段名称.
+    `value`: 字段值.可以是,或者一个字符串,如果全都不是,则该值会被自动转换成字符串.
+    `filename`(可选): 指定文件的文件名,当value参数被指定为一个Blob对象或者一个File对象时,该文件名会被发送到服务器上,对于Blob对象来说,这个值默认为`blob`.
 
 <!-- more -->
 
-利用FormData对象,你可以使用一系列的键值对来模拟一个完整的表单,然后使用XMLHttpRequest发送这个"表单".
-
-
-# 创建一个FormData对象
-你可以先创建一个空的FormData对象,然后使用append()方法向该对象里添加字段,如下:
+你可以先创建一个空的FormData对象，然后使用append()方法向该对象里添加字段，实现demo如下:
 
 ```
 var oMyForm = new FormData();
@@ -66,11 +56,12 @@ oReq.send(oMyForm);
 
 ```
 
-注: 字段"userfile"和"webmasterfile"的值都包含了一个文件.通过 FormData.append()方法赋给字段"accountnum"的数字被自动转换为字符(字段的值可以是一个Blob对象,一个File对象,或者一个字符串,剩下其他类型的值都会被自动转换成字符串).
-在该例子中,我们创建了一个名为oMyForm的FormData对象,该对象中包含了名为"username", "accountnum", "userfile" 以及 "webmasterfile"的字段名,然后使用XMLHttpRequest的send()方法把这些数据发送了出去."webmasterfile"字段的值不是一个字符串,还是一个Blob对象.
+> 注: 字段`userfile`和`webmasterfile`的值都包含了一个文件。通过 `FormData.append()`方法赋给字段`accountnum`的数字被自动转换为字符(字段的值可以是一个Blob对象，一个File对象，或者一个字符串，剩下其他类型的值都会被自动转换成字符串)。
+
+在该例子中，我们创建了一个名为oMyForm的FormData对象，该对象中包含了名为`username`, `accountnum`, `userfile` 以及 `webmasterfile`的字段名，然后使用`XMLHttpRequest`的`send()`方法把这些数据发送了出去。`webmasterfile`字段的值不是一个字符串，还是一个Blob对象。
 
 
-# 使用HTML表单来初始化一个FormData对象
+## HTML表单初始化FormData
 
 可以用一个已有的`<form>`元素来初始化FormData对象,只需要把这个form元素作为参数传入FormData构造函数即可:
 
@@ -96,7 +87,7 @@ oReq.send(formData);
 ```
 你可以通过这种方式添加一些不想让用户编辑的固定字段,然后再发送.
 
-# 使用FormData对象发送文件
+## 使用FormData发送文件
 
 你还可以使用FormData来发送二进制文件.首先在HTML中要有一个包含了文件输入框的form元素:
 
@@ -142,7 +133,7 @@ function sendForm() {
 data.append("myfile", myBlob);
 
 ```
-如果FormData对象中的某个字段值是一个Blob对象,则在发送http请求时,代表该Blob对象所包含文件的文件名的"Content-Disposition"请求头的值在不同的浏览器下有所不同,Firefox使用了固定的字符串"blob,"而Chrome使用了一个随机字符串.
+如果FormData对象中的某个字段值是一个Blob对象，则在发送http请求时，代表该Blob对象所包含文件的文件名的`Content-Disposition`请求头的值在不同的浏览器下有所不同，Firefox使用了固定的字符串`blob`，而Chrome使用了一个随机字符串。
 
 你还可以使用jQuery来发送FormData,但必须要正确的设置相关选项:
 
@@ -158,10 +149,10 @@ $.ajax({
 });
 
 ```
-注：不要显式地设置`contentType`为`multipart/form-data`
+> 注：不要显式地设置`contentType`为`multipart/form-data`。
 
 
-# `FormData`异步上传大文件
+## FormData异步上传大文件
 
 下面给出一个完整的使用`FormData`以及`XMLHttpRequest`上传大文件的例子：
 
@@ -263,7 +254,7 @@ $.ajax({
 
 ```
 
-`upload.php`文件：
+- `upload.php`文件：
 
 ```
 <?php
@@ -278,7 +269,7 @@ sleep(1);
 
 ```
 
-`merge.php`文件：
+- `merge.php`文件：
 
 ```
 

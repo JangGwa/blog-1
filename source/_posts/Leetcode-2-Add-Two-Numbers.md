@@ -20,6 +20,8 @@ LeetCode link: [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/d
 
 ## Solution:
 
+<!-- more -->
+
 ```java
 /**
  * Definition for singly-linked list.

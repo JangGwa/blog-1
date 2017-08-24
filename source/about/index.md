@@ -25,3 +25,10 @@ comments: false
 ## 我希望做什么？
 
 这里只是一个共同成长的地方，你路过这里能学到一些东西，同时也可以留下你自己的见解，有兴趣说不定还可以加个好友，总之我在这里会一直欢迎大家的光临！
+
+## 怎么联系我？
+
+Email：`shans.xia@gmail.com`
+LinkedIn: [Xia Shanshan | LinkedIn](https://www.linkedin.com/in/xia-shanshan-913ab486/)
+
+我会定期check邮箱和领英消息的，欢迎各种技术探讨和工作交流~

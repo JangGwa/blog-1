@@ -1,5 +1,5 @@
 ---
-title: python反转list/array/tuple
+title: Python反转list/array/tuple
 date: 2016-05-13 15:28:10
 tags: [python]
 category: 技术总结

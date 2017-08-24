@@ -1,5 +1,5 @@
 ---
-title: mac下iterm2替代secureCRT配置方法
+title: Mac下iterm2替代secureCRT
 date: 2016-10-29 17:24:00
 tags: [Mac, iTerm2]
 category: Mac效率提升
@@ -17,9 +17,11 @@ Host *
 ControlMaster auto
 ControlPath ~/.ssh/master-%r@%h:%p
 ```
-这样下次登录同一个站点时，即可复用之前的会话信息，我们可以在`~/.ssh/`目录看到
-![](/uploads/1942b8af4d43f54246c29abba.png)
-这代表每次登录这个站点的时候其实是复用之前的会话句柄。
+这样下次登录同一个站点时，即可复用之前的会话信息，我们可以在`~/.ssh/`目录看到:
+
+![](/uploads/mac-iterm2/e32d9bd762a8abf227954b107363f7b1.png)
+
+如果存在上图勾选的文件，这代表每次登录这个站点的时候其实是复用之前的会话句柄。
 
 <!-- more -->
 
@@ -104,13 +106,18 @@ mv remote.exp ~/.ssh
 3.设置调用命令
 
 iTerm -- preferences 打开设置界面，配置如下：
-![](/uploads/5f7b238a183ff66cf3b57342c.png)
+![](/uploads/mac-iterm2/5f7b238a183ff66cf3b57342c.png)
 
 ### 动态密码登录
 
 大公司中，使用动态密码登录跳板机的情况比较常见，动态密码一般是自己设置的6位密码+token的动态6位数字，这种方式看似复杂，其实我们可以通过两种情况看:
-1. 已经通过动态密码登录过跳板机：【复制会话】会实现自动登录，配置方式同上；
-2. 有的同学比较任性，之前没有登陆过跳板机，能不能实现一次操作直接登录跳板机和目标机器呢？可以，但需要高阶一点的`expect`语法，写法如下：
+
+- 第一种：
+已经通过动态密码登录过跳板机：【复制会话】会实现自动登录，配置方式同上；
+
+- 第二种：
+有的同学比较任性，之前没有登陆过跳板机，能不能实现一次操作直接登录跳板机和目标机器呢？可以，但需要高阶一点的`expect`语法，写法如下：
+
 ```
 #!/usr/bin/expect
 
@@ -205,12 +212,17 @@ wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh
 
 | Regular Expression | Action | Parameters |
 | ------| ------ | ------ |
-|rz waiting to receive.\*\*B0100|Run Silent Coprocess|/usr/local/bin/iterm2-send-zmodem.sh|
-|\*\*B00000000000000|Run Silent Coprocess|/usr/local/bin/iterm2-recv-zmodem.sh|
+|`\*\*B0100`|Run Silent Coprocess|/usr/local/bin/iterm2-send-zmodem.sh|
+|`\*\*B00000000000000`|Run Silent Coprocess|/usr/local/bin/iterm2-recv-zmodem.sh|
 
-`zmodem`原作者：[https://github.com/mmastrac/iterm2-zmodem](https://github.com/mmastrac/iterm2-zmodem)
+效果如下：
+![](/uploads/mac-iterm2/5a5d2301275185573efc085ef7f32a5d.png)
+
+至此你可以使用rz、sz命令上传或下载文件了~
+
+> `zmodem`原作者：[https://github.com/mmastrac/iterm2-zmodem](https://github.com/mmastrac/iterm2-zmodem)
 
 参考文章：
-1.[https://linux.die.net/man/1/expect](https://linux.die.net/man/1/expect)
-2.[https://www.pantz.org/software/expect/expect_examples_and_tips.html](https://www.pantz.org/software/expect/expect_examples_and_tips.html)
+1. [https://linux.die.net/man/1/expect](https://linux.die.net/man/1/expect)
+2. [https://www.pantz.org/software/expect/expect_examples_and_tips.html](https://www.pantz.org/software/expect/expect_examples_and_tips.html)
 

@@ -1,11 +1,11 @@
 ---
-title: 理解HTTP之Content-Type
+title: 理解Http协议之Content-Type
 date: 2016-11-06 18:34:36
 tags: [HTTP, Content-Type]
 category: HTTP协议
 ---
 
-# About
+## About
 
 发送Restful API工具：[Chrome插件POST Man](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?utm_source=chrome-ntp-icon)
 
@@ -20,7 +20,7 @@ category: HTTP协议
 那么通过id就能获取到信息，这个包只有header，并不存在body，下面讨论几个包含body的发包的body传输格式。
 
 
-# Content-Type
+## Content-Type
 
 Content-Type用于指定内容类型，一般是指网页中存在的Content-Type，Content-Type属性指定请求和响应的HTTP内容类型。如果未指定 ContentType，默认为text/html。
 
@@ -45,7 +45,7 @@ Content-Type用于指定内容类型，一般是指网页中存在的Content-Typ
 
 前面几个都很好理解，都是html，css，javascript的文件类型，后面四个是POST的发包方式。
 
-# application/x-www-form-urlencoded
+### application/x-www-form-urlencoded
 
 application/x-www-form-urlencoded是常用的表单发包方式，普通的表单提交，或者js发包，默认都是通过这种方式，
 
@@ -73,7 +73,7 @@ Content-Type:application/x-www-form-urlencoded
 ```
 那么服务器收到的raw body会是，name=homeway&key=nokey，在php中，通过$_POST就可以获得数组形式的数据。
 
-# multipart/form-data
+### multipart/form-data
 
 multipart/form-data用在发送文件的POST包。
 
@@ -112,7 +112,7 @@ Content-Disposition: form-data; name="file"; filename="index.py"
 那么--用于区分数据快，而后面的数据`633e61ebf351484f9124d63ce76d8469`就是标示区分包作用。
 
 
-# text/xml
+### text/xml
 
 微信用的是这种数据格式发送请求的。
 
@@ -151,7 +151,7 @@ $data = file_get_contents(‘php://input’);
 
 ```
 
-# application/json
+### application/json
 
 通过json形式将数据发送给服务器，一开始，我尝试通过curl，给服务器发送application/json格式包，
 
@@ -168,5 +168,5 @@ $data = file_get_contents(‘php://input’);
 之所以出现那么多乱七八糟的-------应该是php数组传输进去，存在的转换问题吧（我目前能想到的原因）。
 
 
-转自[http://homeway.me/2015/07/19/understand-http-about-content-type/](http://homeway.me/2015/07/19/understand-http-about-content-type/)
+- 转自[http://homeway.me/2015/07/19/understand-http-about-content-type/](http://homeway.me/2015/07/19/understand-http-about-content-type/)
 

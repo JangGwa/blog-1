@@ -6,5 +6,7 @@ tags:
 
 ## 参考
 
-1.[http://www.hawstein.com/posts/dp-novice-to-advanced.html](http://www.hawstein.com/posts/dp-novice-to-advanced.html)
-2.[http://wiki.jikexueyuan.com/project/easy-learn-algorithm/amazing-priority-array.html](http://wiki.jikexueyuan.com/project/easy-learn-algorithm/amazing-priority-array.html)
+1. [http://www.hawstein.com/posts/dp-novice-to-advanced.html](http://www.hawstein.com/posts/dp-novice-to-advanced.html)
+2. [http://wiki.jikexueyuan.com/project/easy-learn-algorithm/amazing-priority-array.html](http://wiki.jikexueyuan.com/project/easy-learn-algorithm/amazing-priority-array.html)
+
+<!-- more -->

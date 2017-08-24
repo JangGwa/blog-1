@@ -1,5 +1,5 @@
 ---
-title: php多字节字符串截取方法
+title: PHP多字节字符串截取方法
 date: 2016-11-07 15:05:35
 tags: [php]
 category: 技术总结
@@ -57,3 +57,4 @@ function mb_substr($str, $start, $len, $charset = 'utf8') {
 }
 
 ```
+<!-- more -->

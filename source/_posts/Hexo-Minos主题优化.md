@@ -17,3 +17,5 @@ layout: tag // 引用theme下的layout中tag.ejs
 ```
 layout: categories // 引用theme下的layout中category.ejs
 ```
+
+<!-- more -->
