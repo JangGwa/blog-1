@@ -28,7 +28,7 @@ comments: false
 
 ## 怎么联系我？
 
-Email：`shans.xia@gmail.com`
+Email: `shans.xia@gmail.com`
 LinkedIn: [Xia Shanshan | LinkedIn](https://www.linkedin.com/in/xia-shanshan-913ab486/)
 
 我会定期check邮箱和领英消息的，欢迎各种技术探讨和工作交流~
